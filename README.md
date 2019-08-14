@@ -1,27 +1,40 @@
-# UGit
+# GitFinder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+GitFinder is a way to access the public Github repositories and profile.
 
-## Development server
+## Purpose
+Idea is to demonstrate how to get the public profiles of github users and there basic details such as profile, location, bio etc. To accomplish this task, I have used Github API.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+###### "GitFinder is an angular 8.2.0 project to get the Github Users Repositories and informations."
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+Before you begin, make sure your development environment includes Node.js® and an npm package manager.
+Install Node using below command.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+sudo apt-get install curl
 
-## Running unit tests
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+sudo apt-get install nodejs
+```
+###### Check node and npm version using below command
 
-## Running end-to-end tests
+```bash
+node -v
+ 
+npm -v
+```
+### Get Repository 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Either clone this repository or fork it on GitHub and clone your fork:
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```git
+git clone https://github.com/shivmohan1994/GitFinder.git
+
+cd GitFinder
+```
