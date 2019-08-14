@@ -1,0 +1,145 @@
+<app-header></app-header>
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <mat-card class="form-card">
+      <mat-grid-list cols='4' rowHeight="70px">
+        <h4 class="text-center"><i class="fa fa-github-alt" aria-hidden="true"
+            style="padding:5px;border-radius:50%;border:1px solid grey;"></i> Git Finder</h4>
+        <form class="search-form">
+          <mat-form-field class="search-full-width">
+            <input type="text" [(ngModel)]="userName" placeholder="Search github User, using name.."
+              (keyup)="getUser($event)" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option" (click)=getUserName(option)>
+                {{option.login}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </mat-grid-list>
+      <br>
+    </mat-card>
+  </div>
+  <div class="col-3"></div>
+</div>
+
+<!-- Profile Data -->
+
+<div class="row" *ngIf="userData; else about">
+  <div class="col-4">
+    <div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover"
+      style="width: 360px; overflow: hidden; border-radius: 1px;">
+      <img [src]="userData?.avatar_url" alt="user_avatar" class="d-block w-full">
+      <div class="px-2 pt-2 pb-1">
+        <h2 class="ff-serif font-weight-normal text-black mt-0 mb-1" style="line-height: 1.25;">
+          {{userData?.name}}
+        </h2>
+        <p class="card-text" style="margin-bottom:5px">
+          <i>-{{userData?.bio||"Creative with GitWorld"}}</i>
+        </p><br>
+        <p class="text-titlecase" style="margin-bottom:5px">
+          <i class="fa fa-briefcase"></i>
+          {{userData?.company ||" @Github"}}
+        </p>
+        <p class="text-titlecase" style="margin-bottom:5px">
+          <i class="fa fa-map-marker"></i>
+          {{userData?.location ||" @GitWorld"}}
+        </p>
+        <p *ngIf="userData?.blog else gitUrl">
+          <i class="fa fa-link"></i>
+          <a [href]="userData?.blog" target="_blank" style="text-decoration: none;"> Portfolio</a>
+        </p>
+        <ng-template #gitUrl>
+          <mat-icon>account_circle</mat-icon>
+          <a [href]="userData?.html_url" target="_blank" style="text-decoration: none;"> Portfolio</a>
+        </ng-template>
+      </div>
+      <div class="social-icons">
+        <div class="icon">
+          <a href="/"><i class="fa fa-user-plus"></i></a>
+          <h4>{{userData?.followers}}</h4>
+          <p>Followers</p>
+        </div>
+
+        <div class="icon">
+          <a href="#"><i class="fa fa-users"></i></a>
+          <h4>{{userData?.following}}</h4>
+          <p>Following</p>
+        </div>
+
+        <div class="icon">
+          <a href="#"><i class="fa fa-folder"></i></a>
+          <h4>{{userData?.public_repos}}</h4>
+          <p>Repositories</p>
+        </div>
+        <div class="icon">
+          <a href="#"><i class="fa fa-github"></i></a>
+          <h4>{{userData?.public_gists}}</h4>
+          <p>Gists</p>
+        </div>
+      </div>
+      <a [href]="userData?.html_url" target="_blank"
+        class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
+        Read More
+      </a>
+    </div>
+  </div>
+
+  <!-- Repositories Data -->
+
+  <div class="col-8">
+    <br>
+    <div class="row" *ngIf="repos?.length; else repo_not_found">
+      <ul class="list">
+        <cdk-virtual-scroll-viewport style="height: 700px" itemSize="10">
+          <ng-container *cdkVirtualFor="let repo of repos">
+            <div class="col-6">
+              <mat-card class="repo-card">
+                <mat-card-header>
+                  <mat-card-title class="repo_title">
+                    <i class="fa fa-github-alt" aria-hidden="true"
+                      style="padding:3px;border-radius:50%;border:1px solid grey;"></i> &nbsp; {{repo?.name|titlecase}}
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-divider>
+                </mat-divider>
+                <mat-card-content>
+                  <h5 class="text-left pt-1 text-muted">Created-on {{repo?.created_at|date}}</h5>
+                  <p class="repo_description card-text">
+                    <i>{{repo?.description}}...</i>
+                  </p>
+                  <h5 class="text-right">Updated-at {{repo?.updated_at|date}}</h5>
+                </mat-card-content>
+                <mat-divider>
+                </mat-divider>
+                <mat-card-footer>
+                  <div class="row text-center">
+                    <div class="col-4">
+                      <small><a [href]="repo?.html_url" target="_blank"><i class="fa fa-eye"></i> View</a> </small>
+                    </div>
+                    <div class="col-4">
+                      <small><i class="fa fa-laptop"></i> {{repo?.language || "Git"}}</small>
+                    </div>
+                    <div class="col-4">
+                      <small><a [href]="repo?.clone_url" target="_blank"><i class="fa fa-copy"></i> Clone</a></small>
+                    </div>
+                  </div>
+                </mat-card-footer>
+
+              </mat-card>
+            </div>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
+      </ul>
+    </div>
+  </div>
+  <ng-template #repo_not_found>
+    <img src="../assets/image/repo_not_found.gif" alt="repo_not_found" height="80%" width="80%" />
+  </ng-template>
+
+</div>
+<ng-template #about>
+</ng-template>
+<app-footer></app-footer>
+<router-outlet></router-outlet>
