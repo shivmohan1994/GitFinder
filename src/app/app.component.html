@@ -29,7 +29,7 @@
 <div class="row" *ngIf="userData; else about">
   <div class="col-4">
     <div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover"
-      style="width: 360px; overflow: hidden; border-radius: 1px;">
+      style="width: 350px; overflow: hidden; border-radius: 1px;">
       <img [src]="userData?.avatar_url" alt="user_avatar" class="d-block w-full">
       <div class="px-2 pt-2 pb-1">
         <h2 class="ff-serif font-weight-normal text-black mt-0 mb-1" style="line-height: 1.25;">
@@ -90,9 +90,9 @@
 
   <div class="col-8">
     <br>
-    <div class="row" *ngIf="repos?.length; else repo_not_found">
-      <ul class="list">
-        <cdk-virtual-scroll-viewport style="height: 700px" itemSize="10">
+    <div class="row text-center" *ngIf="repos?.length; else repo_not_found">
+      <div class="list text-center">
+        <cdk-virtual-scroll-viewport style="height: 700px;" itemSize="10">
           <ng-container *cdkVirtualFor="let repo of repos">
             <div class="col-6">
               <mat-card class="repo-card">
@@ -114,24 +114,23 @@
                 <mat-divider>
                 </mat-divider>
                 <mat-card-footer>
-                  <div class="row text-center">
-                    <div class="col-4">
-                      <small><a [href]="repo?.html_url" target="_blank"><i class="fa fa-eye"></i> View</a> </small>
-                    </div>
-                    <div class="col-4">
-                      <small><i class="fa fa-laptop"></i> {{repo?.language || "Git"}}</small>
-                    </div>
-                    <div class="col-4">
-                      <small><a [href]="repo?.clone_url" target="_blank"><i class="fa fa-copy"></i> Clone</a></small>
-                    </div>
+                  <div class="row repo-footer">
+                      <span class="col-4 text-center">
+                        <small><a [href]="repo?.html_url" target="_blank"><i class="fa fa-eye"></i> View</a> </small>
+                      </span>
+                      <span class="col-4 text-center">
+                        <small><i class="fa fa-laptop"></i> {{repo?.language || "Git"}}</small>
+                      </span>
+                      <span class="col-4 text-center">
+                        <small><a [href]="repo?.clone_url" target="_blank"><i class="fa fa-copy"></i> Clone</a></small>
+                      </span>
                   </div>
                 </mat-card-footer>
-
               </mat-card>
             </div>
           </ng-container>
         </cdk-virtual-scroll-viewport>
-      </ul>
+      </div>
     </div>
   </div>
   <ng-template #repo_not_found>
