@@ -1,6 +1,7 @@
 # GitFinder
 
 GitFinder is a way to access the public Github repositories and profile.
+[GitFinder](https://gitfinder-476ea.firebaseapp.com/)
 
 ## Purpose
 Idea is to demonstrate how to get the public profiles of github users and there basic details such as profile, location, bio etc. To accomplish this task, I have used Github API.
@@ -32,13 +33,34 @@ npm -v
 
 Either clone this repository or fork it on GitHub and clone your fork:
 
-
-<<<<<<< HEAD
-To get more helps on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-=======
 ```git
 git clone https://github.com/shivmohan1994/GitFinder.git
 
 cd GitFinder
 ```
->>>>>>> 18563a4445445bb2eb1184a605b0ea8a3bc84901
+### Install npm 
+
+Inside your project directory run the below command to install node packages
+
+```git
+npm install
+```
+Now run your project using below command.
+
+```git
+ng serve --o
+```
+it will open the GitFinder in your default browser.
+
+### Browser Support
+
+I have test against Chrome and Firefox. The application will run on most modern browsers that are supported by the Angular framework. It will also support for mobile devices.
+
+### Have a look
+
+Have a look of GitFinder using below URL
+
+>[GitFinder](https://gitfinder-476ea.firebaseapp.com/)
+
+> ***Happy Coding :)***
+
