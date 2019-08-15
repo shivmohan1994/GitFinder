@@ -20,7 +20,6 @@
 /* Repo Card */
 
 .repo-card {
-  /* max-width: 600px; */
   width:100%;
   transition: all 1s ease;
 }
