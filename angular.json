@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "UGit": {
+    "GitFinder": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/UGit",
+            "outputPath": "dist/GitFinder",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "UGit:build"
+            "browserTarget": "GitFinder:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "UGit:build:production"
+              "browserTarget": "GitFinder:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "UGit:build"
+            "browserTarget": "GitFinder:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "UGit:serve"
+            "devServerTarget": "GitFinder:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "UGit:serve:production"
+              "devServerTarget": "GitFinder:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "UGit"
+  "defaultProject": "GitFinder"
 }
